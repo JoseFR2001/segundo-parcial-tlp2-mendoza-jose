@@ -17,7 +17,6 @@ export const RegisterPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     const response = await fetch("http://localhost:3000/api/register", {
       method: "POST",
@@ -28,9 +27,7 @@ export const RegisterPage = () => {
       },
     });
 
-    console.log(response);
     const data = await response.json();
-    console.log(data);
 
     if (response.ok) {
       navigate("/login");

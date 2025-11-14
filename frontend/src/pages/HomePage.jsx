@@ -17,7 +17,6 @@ export const HomePage = () => {
       });
 
       const data = await response.json();
-      console.log("Home", data);
       setProfile(data.user);
     } catch (error) {
       console.error("Error al trar el perfil:", error);
@@ -45,7 +44,6 @@ export const HomePage = () => {
 
   const handleReload = () => {
     setSuperHeroes([]);
-    console.log(superHeroes);
     getDataSuperHeroes();
   };
   return (

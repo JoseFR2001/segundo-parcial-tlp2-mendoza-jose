@@ -16,7 +16,6 @@ export const LoginPage = () => {
   const handleSubmit = async (event) => {
     setIsCredential(false);
     event.preventDefault();
-    console.log(formState);
 
     const response = await fetch("http://localhost:3000/api/login", {
       method: "POST",
@@ -26,8 +25,6 @@ export const LoginPage = () => {
         "Content-type": "application/json",
       },
     });
-
-    console.log(response);
 
     if (!response.ok) {
       setIsCredential(true);

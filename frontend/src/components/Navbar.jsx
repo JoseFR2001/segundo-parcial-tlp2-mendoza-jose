@@ -18,12 +18,12 @@ export const Navbar = () => {
       });
 
       const data = await response.json();
-      console.log("Esta es la data que viene desde el Navbar", data);
       setProfile(data.user);
     } catch (error) {
       console.error("Error al trar el perfil:", error);
     }
   };
+
   useEffect(() => {
     getData();
   }, []);
