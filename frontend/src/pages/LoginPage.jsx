@@ -20,6 +20,7 @@ export const LoginPage = () => {
     const response = await fetch("http://localhost:3000/api/login", {
       method: "POST",
       body: JSON.stringify(formState),
+      credentials: "include",
       headers: {
         "Content-type": "application/json",
       },
@@ -27,10 +28,12 @@ export const LoginPage = () => {
 
     console.log(response);
 
-    if (!response.ok) {
-      setError(true);
+    // if (!response.ok) {
+    //   setError(true);
+    // }
+    if (response.ok) {
+      navigate("/home");
     }
-    navigate("/home");
   };
 
   return (
