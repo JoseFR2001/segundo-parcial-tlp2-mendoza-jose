@@ -8,7 +8,7 @@ export const LoginPage = () => {
   // TODO: Implementar función handleSubmit
   const [error, setError] = useState(true);
   const navigate = useNavigate();
-  const { formState, handleChange, handleReset } = useForm({
+  const { formState, handleChange } = useForm({
     username: "",
     password: "",
   });

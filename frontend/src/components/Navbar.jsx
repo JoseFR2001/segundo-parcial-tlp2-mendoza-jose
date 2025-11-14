@@ -8,7 +8,7 @@ export const Navbar = () => {
   // TODO: Después del logout exitoso, redireccionar a /login
   // TODO: Manejar errores apropiadamente
   const navigate = useNavigate();
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState({});
 
   const getData = async () => {
     try {
@@ -19,16 +19,17 @@ export const Navbar = () => {
 
       const data = await response.json();
       console.log("Esta es la data que viene desde el Navbar", data);
+      setProfile(data.user);
     } catch (error) {
       console.error("Error al trar el perfil:", error);
     }
   };
   useEffect(() => {
     getData();
-  });
+  }, []);
 
   const handleLogout = async () => {
-    const res = await fetch("http://localhost:3000/api/login", {
+    const res = await fetch("http://localhost:3000/api/logout", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify(),
@@ -46,7 +47,7 @@ export const Navbar = () => {
     }
   };
 
-  const userName = "Usuario"; // TODO: Reemplazar con el nombre real del usuario obtenido de /api/profile
+  const userName = profile.name; // TODO: Reemplazar con el nombre real del usuario obtenido de /api/profile
 
   return (
     <nav className="bg-gray-900 text-white h-16 left-0 right-0 shadow-lg sticky top-0 z-50">

@@ -5,7 +5,7 @@ export const RegisterPage = () => {
   // TODO: Integrar lógica de registro aquí
   // TODO: Implementar useForm para el manejo del formulario
   // TODO: Implementar función handleSubmit
-  const { formState, handleChange, handleReset } = useForm({
+  const { formState, handleChange } = useForm({
     username: "",
     email: "",
     password: "",
@@ -32,9 +32,6 @@ export const RegisterPage = () => {
     const data = await response.json();
     console.log(data);
 
-    // if (!response.ok) {
-    //   setError(true);
-    // }
     if (response.ok) {
       navigate("/login");
     }
