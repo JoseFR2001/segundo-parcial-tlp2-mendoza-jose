@@ -6,7 +6,7 @@ export const LoginPage = () => {
   // TODO: Integrar lógica de autenticación aquí
   // TODO: Implementar useForm para el manejo del formulario
   // TODO: Implementar función handleSubmit
-  const [error, setError] = useState(true);
+  const [isCredential, setIsCredential] = useState(false);
   const navigate = useNavigate();
   const { formState, handleChange } = useForm({
     username: "",
@@ -14,6 +14,7 @@ export const LoginPage = () => {
   });
 
   const handleSubmit = async (event) => {
+    setIsCredential(false);
     event.preventDefault();
     console.log(formState);
 
@@ -28,9 +29,9 @@ export const LoginPage = () => {
 
     console.log(response);
 
-    // if (!response.ok) {
-    //   setError(true);
-    // }
+    if (!response.ok) {
+      setIsCredential(true);
+    }
     if (response.ok) {
       navigate("/home");
     }
@@ -45,8 +46,8 @@ export const LoginPage = () => {
         </h2>
 
         {/* TODO: Mostrar este div cuando haya error */}
-        {error ? (
-          <div className="hidden bg-red-100 text-red-700 p-3 rounded mb-4">
+        {isCredential ? (
+          <div className=" bg-red-100 text-red-700 p-3 rounded mb-4">
             <p className="text-sm">
               Credenciales incorrectas. Intenta nuevamente.
             </p>
